@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <ctype.h>
 
+int evaluate_line(const char *original_formula, char *var_names, int n_vars, int *current_values);
+
 void run_logic_analysis(char *path) {
     path = "test.txt";
     FILE *file = fopen(path, "r");
@@ -62,8 +64,9 @@ void run_logic_analysis(char *path) {
             printf("%d\t", bit);
         }
         
-        int f_res = 0; // Временная заглушка вместо вызова функции
+        int f_res = evaluate_line(buffer,var_names,N_seen_vars,current_values);
         printf("| %d\n", f_res);
+
     }
 
     printf("F: %s \nN of vars: %d\n", buffer, N_seen_vars);
